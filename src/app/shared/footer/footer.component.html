@@ -2,31 +2,47 @@
     <footer id="footer">
       <div class="inner">
 
-        <h3>Contacto</h3>
+        <h1>Contáctenos</h1>
 
-        <form action="#" method="post">
-
+        <form [formGroup]="myForm" (ngSubmit)="onsubmit()" novalidate>
           <div class="field half first">
-            <label for="name">Nombre</label>
-            <input name="name" id="name" type="text" placeholder="Nombre">
+            <label>Nombre</label>
+            <input type="text" formControlName="name"  placeholder="Nombre" [(ngModel)]="art.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <p *ngIf="f.name.errors.required">Debe ingresar el Nombre</p>
+                <p *ngIf="f.name.errors.minlength">El Nombre debe tener al menos 5 caracteres</p>
+            </div>
           </div>
+
           <div class="field half">
-            <label for="email">Email</label>
-            <input name="email" id="email" type="email" placeholder="Email">
+            <label>Email</label>
+            <input type="text" formControlName="email"  placeholder="Mail" [(ngModel)]="art.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors"  class="invalid-feedback">
+                <p *ngIf="f.email.errors.required">Debe ingresar el Mail</p>
+                <p *ngIf="f.email.errors.minlength">El Mail debe tener al menos 5 caracteres</p>
+            </div>
           </div>
+
           <div class="field">
-            <label for="message">Mensaje</label>
-            <textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
+            <label>Mensaje</label>
+            <textarea type="text" formControlName="message"  placeholder="Mensaje" [(ngModel)]="art.message" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+            <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                <p *ngIf="f.message.errors.required">Debe ingresar el Mensaje</p>
+                <p *ngIf="f.message.errors.minlength">El Mensaje debe tener al menos 5 caracteres</p>
+            </div>
           </div>
+
           <ul class="actions">
-            <li><input value="Enviar Mensaje" class="button alt" type="submit"></li>
+            <button class="button alt" type="submit">Enviar Mensaje</button>
           </ul>
+
+          <div *ngIf="show">
+            <div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>El mail se envio correctamente!</strong> Muchas gracias.
+            </div>
+          </div>
+
         </form>
-
-        <div class="copyright">
-          &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
-        </div>
-
       </div>
     </footer>
-

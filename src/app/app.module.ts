@@ -9,6 +9,13 @@ import { MainComponent } from './pages/main/main.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+/*Lo uso en footer-component*/
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+/*Lo uso en footer-component*/
+
+/*Lo usa para comunicarme con PHP*/
+import { HttpClientModule } from '@angular/common/http';
+/*Lo usa para comunicarme con PHP*/
 
 @NgModule({
   declarations: [
@@ -22,7 +29,10 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
